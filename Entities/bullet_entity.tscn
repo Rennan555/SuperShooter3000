@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dymg1rbrruhfk"]
+
+[ext_resource type="Texture2D" uid="uid://bmiw1ri3q6fo4" path="res://Assets/Sprites/Props/bala_sprite.png" id="1_f2ft7"]
+[ext_resource type="Script" uid="uid://c4273dii82mcc" path="res://Scripts/Props/Bullet.cs" id="1_wxbg4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxbg4"]
+radius = 2.0
+height = 32.0
+
+[node name="BulletBody" type="CharacterBody2D"]
+script = ExtResource("1_wxbg4")
+
+[node name="BulletSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_f2ft7")
+
+[node name="BulletArea" type="Area2D" parent="."]
+
+[node name="BulletCollisionShape" type="CollisionShape2D" parent="BulletArea"]
+shape = SubResource("CapsuleShape2D_wxbg4")
+
+[connection signal="ready" from="." to="." method="_Ready"]
+[connection signal="body_entered" from="BulletArea" to="." method="_OnBodyEntered"]

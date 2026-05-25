@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp7qsohgembvl"]
+
+[ext_resource type="PackedScene" uid="uid://ds4nymojnwfmo" path="res://Entities/character_entity.tscn" id="1_htcdm"]
+[ext_resource type="Texture2D" uid="uid://cdxh2ul5qt48v" path="res://Assets/Sprites/Characters/inimigo_basico.png" id="2_d4a06"]
+[ext_resource type="Script" uid="uid://b5j0dyr2khjx5" path="res://Scripts/Characters/Enemy.cs" id="2_lol0w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lol0w"]
+radius = 15.0
+
+[node name="EnemyBody" instance=ExtResource("1_htcdm")]
+script = ExtResource("2_lol0w")
+
+[node name="CharacterSprite" parent="." index="0"]
+texture = ExtResource("2_d4a06")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_lol0w")
+
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="takeDamage" from="." to="." method="_TakeDamage"]
+[connection signal="timeout" from="Timer" to="." method="Shoot"]

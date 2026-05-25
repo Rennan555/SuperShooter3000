@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dplo301xd7vea"]
+
+[ext_resource type="PackedScene" uid="uid://ds4nymojnwfmo" path="res://Entities/character_entity.tscn" id="1_5dbxt"]
+[ext_resource type="Script" uid="uid://d26q80rm2fiiy" path="res://Scripts/Characters/Player.cs" id="2_4jvmv"]
+[ext_resource type="Texture2D" uid="uid://dcbexou0krlsx" path="res://Assets/Sprites/Characters/aviao_sprite.png" id="2_cmdqa"]
+[ext_resource type="Script" uid="uid://s2ky6q1nj71" path="res://Scripts/Components/ControllerComponent.cs" id="3_cmdqa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jvmv"]
+radius = 14.0
+height = 52.0
+
+[node name="PlayerBody" instance=ExtResource("1_5dbxt")]
+script = ExtResource("2_4jvmv")
+
+[node name="CharacterSprite" parent="." index="0"]
+texture = ExtResource("2_cmdqa")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_4jvmv")
+
+[node name="ControllerComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("char_body_2d")]
+script = ExtResource("3_cmdqa")
+char_body_2d = NodePath("../..")
+char_velocity = 100
+metadata/_custom_type_script = "uid://s2ky6q1nj71"
+
+[connection signal="input_event" from="." to="." method="_Input"]
+[connection signal="takeDamage" from="." to="." method="TakeDamage"]

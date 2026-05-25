@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://c80unb0fba3c"]
+
+[ext_resource type="PackedScene" uid="uid://dp7qsohgembvl" path="res://Entities/enemy_entity.tscn" id="1_xkk37"]
+[ext_resource type="PackedScene" uid="uid://dplo301xd7vea" path="res://Entities/player_entity.tscn" id="2_g6ddx"]
+[ext_resource type="Texture2D" uid="uid://3evd37v0clfe" path="res://Assets/Sprites/Props/bg_cima.png" id="3_b2m6o"]
+[ext_resource type="Texture2D" uid="uid://c2rxiuxiyfs7i" path="res://Assets/Sprites/Props/bg_meio.png" id="4_f1t2y"]
+
+[node name="MainStage" type="Node2D"]
+
+[node name="PlayerBody" parent="." instance=ExtResource("2_g6ddx")]
+position = Vector2(116, 248)
+
+[node name="ParallaxLayers" type="Node2D" parent="."]
+
+[node name="UpperParallax" type="Parallax2D" parent="ParallaxLayers"]
+repeat_size = Vector2(0, 288)
+autoscroll = Vector2(0, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayers/UpperParallax"]
+z_index = -1
+position = Vector2(112, 144)
+texture = ExtResource("3_b2m6o")
+
+[node name="MiddleParallax" type="Parallax2D" parent="ParallaxLayers"]
+repeat_size = Vector2(0, 288)
+autoscroll = Vector2(0, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayers/MiddleParallax"]
+z_index = -2
+position = Vector2(112, 144)
+texture = ExtResource("4_f1t2y")
+
+[node name="LessertParallax" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -3
+autoscroll = Vector2(10, 0)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxLayers/LessertParallax"]
+offset_right = 224.0
+offset_bottom = 288.0
+color = Color(0.36206952, 0.0014006048, 0.60311276, 1)
+
+[node name="EnemyBody" parent="." instance=ExtResource("1_xkk37")]
+position = Vector2(106, 42)
