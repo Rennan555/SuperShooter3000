@@ -12,7 +12,7 @@ script = ExtResource("1_f1t2y")
 wait_time = 3.0
 autostart = true
 
-[node name="PlayerBody" parent="." instance=ExtResource("2_g6ddx")]
+[node name="Player" parent="." instance=ExtResource("2_g6ddx")]
 position = Vector2(116, 248)
 
 [node name="ParallaxLayers" type="Node2D" parent="."]
@@ -49,7 +49,7 @@ color = Color(0.36206952, 0.0014006048, 0.60311276, 1)
 [node name="LivesLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Vidas: 3"
+text = "Vida: 3"
 
 [node name="PointsLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
@@ -61,4 +61,5 @@ grow_vertical = 0
 text = "Pontos: 0"
 
 [connection signal="addPoints" from="." to="." method="_AddPoints"]
+[connection signal="playerDamage" from="." to="." method="_PlayerDamage"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_SpawnEnemy"]

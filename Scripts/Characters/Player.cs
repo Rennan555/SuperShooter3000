@@ -4,18 +4,27 @@ using System;
 public partial class Player : Character
 {
 	private PackedScene bulletScene;
+	private Node currentScene;
 	
 	public override void _Ready()
 	{
 		this.health = 3;
 		this.attackPower = 1;
+		this.currentScene = GetTree().CurrentScene;
 		
 		bulletScene = GD.Load<PackedScene>("res://Entities/bullet_entity.tscn");
+	}
+	
+	public byte getHealth()
+	{
+		return this.health;
 	}
 	
 	public void TakeDamage(byte damage)
 	{
 		this.health -= damage;
+		this.currentScene.EmitSignal(Stage.SignalName.playerDamage, damage);
+		
 		if (this.health <= 0)
 		{
 			QueueFree();
