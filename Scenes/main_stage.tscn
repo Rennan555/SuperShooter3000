@@ -49,6 +49,7 @@ color = Color(0.36206952, 0.0014006048, 0.60311276, 1)
 [node name="LivesLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_constants/outline_size = 3
 text = "Vida: 3"
 
 [node name="PointsLabel" type="Label" parent="CanvasLayer"]
@@ -58,7 +59,27 @@ anchor_bottom = 1.0
 offset_top = -23.0
 offset_right = 40.0
 grow_vertical = 0
+theme_override_constants/outline_size = 3
 text = "Pontos: 0"
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 34
+text = "Game Over"
 
 [connection signal="addPoints" from="." to="." method="_AddPoints"]
 [connection signal="playerDamage" from="." to="." method="_PlayerDamage"]

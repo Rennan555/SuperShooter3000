@@ -15,6 +15,7 @@ public partial class Stage : Node2D
 	private Player player;
 	private Label livesLabel;
 	private Label pointsLabel;
+	private Label gameOverLabel;
 	
 	public override void _Ready()
 	{
@@ -23,6 +24,7 @@ public partial class Stage : Node2D
 		this.lives = player.getHealth();
 		this.livesLabel = GetNode<Label>("CanvasLayer/LivesLabel");
 		this.pointsLabel = GetNode<Label>("CanvasLayer/PointsLabel");
+		this.gameOverLabel = GetNode<Label>("CanvasLayer/GameOverLabel");
 	}
 	
 	public void _SpawnEnemy()
@@ -59,5 +61,10 @@ public partial class Stage : Node2D
 	{
 		this.lives -= damage;
 		this.livesLabel.Text = "Vida: " + this.lives;
+		
+		if (this.lives <= 0)
+		{
+			this.gameOverLabel.Visible = true;
+		}
 	}
 }
