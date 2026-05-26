@@ -6,7 +6,7 @@ public partial class Stage : Node2D
 	[Signal]
 	public delegate void addPointsEventHandler(ushort extraPoints);
 	
-	private ushort points; // 0 a 65.535
+	private ushort points = 0; // 0 a 65.535
 	private PackedScene enemyScene;
 	
 	public override void _Ready()
@@ -17,7 +17,7 @@ public partial class Stage : Node2D
 	public void _SpawnEnemy()
 	{
 		Random rand = new Random();
-		int xPosition = rand.Next(33,240);
+		int xPosition = rand.Next(33,220);
 		int yPosition = -30;
 		
 		Enemy newEnemy = enemyScene.Instantiate<Enemy>();
@@ -33,7 +33,7 @@ public partial class Stage : Node2D
 	
 	public void _AddPoints(ushort extraPoints)
 	{
-		if (this.points <= 65535 - extraPoints)
+		if (this.points >= 65535 - extraPoints)
 		{
 			OS.Crash("yeah");
 		}
