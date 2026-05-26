@@ -5,12 +5,15 @@ public partial class Player : Character
 {
 	private PackedScene bulletScene;
 	private Node currentScene;
+	private Timer cooldownTimer;
+	private bool canShoot = true;
 	
 	public override void _Ready()
 	{
 		this.health = 3;
 		this.attackPower = 1;
 		this.currentScene = GetTree().CurrentScene;
+		this.cooldownTimer = GetNode<Timer>("CooldownTimer");
 		
 		bulletScene = GD.Load<PackedScene>("res://Entities/bullet_entity.tscn");
 	}
@@ -31,9 +34,14 @@ public partial class Player : Character
 		}
 	}
 	
+	public void _EnableShoot()
+	{
+		this.canShoot = true;
+	}
+	
 	public override void _Input(InputEvent @event)
 	{
-		if (Input.IsActionPressed("Shoot"))
+		if (Input.IsActionPressed("Shoot") && this.canShoot)
 		{
 			Bullet bullet1 = bulletScene.Instantiate<Bullet>();
 			Bullet bullet2 = bulletScene.Instantiate<Bullet>();
@@ -59,6 +67,9 @@ public partial class Player : Character
 			GetTree().CurrentScene.AddChild(bullet2);
 			GetTree().CurrentScene.AddChild(bullet3);
 			GetTree().CurrentScene.AddChild(bullet4);
+			
+			this.canShoot = false;
+			this.cooldownTimer.Start();
 		}
 	}
 }

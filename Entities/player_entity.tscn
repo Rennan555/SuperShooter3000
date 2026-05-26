@@ -24,5 +24,10 @@ char_body_2d = NodePath("../..")
 char_velocity = 100
 metadata/_custom_type_script = "uid://s2ky6q1nj71"
 
+[node name="CooldownTimer" type="Timer" parent="." index="3"]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="input_event" from="." to="." method="_Input"]
 [connection signal="takeDamage" from="." to="." method="TakeDamage"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_EnableShoot"]
