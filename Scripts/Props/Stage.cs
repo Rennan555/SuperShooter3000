@@ -7,6 +7,24 @@ public partial class Stage : Node2D
 	public delegate void addPointsEventHandler(ushort extraPoints);
 	
 	private ushort points; // 0 a 65.535
+	private PackedScene enemyScene;
+	
+	public override void _Ready()
+	{
+		this.enemyScene = GD.Load<PackedScene>("res://Entities/enemy_entity.tscn");
+	}
+	
+	public void _SpawnEnemy()
+	{
+		Random rand = new Random();
+		int xPosition = rand.Next(33,240);
+		int yPosition = -30;
+		
+		Enemy newEnemy = enemyScene.Instantiate<Enemy>();
+		newEnemy.GlobalPosition = new Vector2(xPosition,yPosition);
+		
+		GetTree().CurrentScene.AddChild(newEnemy);
+	}
 	
 	public ushort getPoints()
 	{

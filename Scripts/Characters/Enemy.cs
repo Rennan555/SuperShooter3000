@@ -12,11 +12,13 @@ public partial class Enemy : Character
 	
 	public override void _Ready()
 	{
+		Random rand = new Random();
+		
 		this.health = 1;
 		this.attackPower = 1;
 		this.bulletScene = GD.Load<PackedScene>("res://Entities/bullet_entity.tscn");
 		this.currentScene = GetTree().CurrentScene;
-		this.xSpeed = -60f;
+		this.xSpeed = rand.Next(40, 80) * -1f;
 		this.ySpeed = 10f;
 	}
 	
@@ -40,7 +42,9 @@ public partial class Enemy : Character
 	
 	private void TurnDirection()
 	{
-		if (Position.X == 13 || Position.X == 209) this.xSpeed *= -1f;
+		if (Position.X <= 13 || Position.X >= 209) {
+			this.xSpeed *= -1f;
+		}
 	}
 	
 	public override void _PhysicsProcess(double delta)
