@@ -33,7 +33,14 @@ public partial class Stage : Node2D
 	
 	public void _AddPoints(ushort extraPoints)
 	{
-		this.points += extraPoints;
+		if (this.points <= 65535 - extraPoints)
+		{
+			OS.Crash("yeah");
+		}
+		else
+		{
+			this.points += extraPoints;
+		}
 		GD.Print("Pontos: ", this.points);
 	}
 }
