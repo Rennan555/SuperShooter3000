@@ -17,6 +17,7 @@ public partial class Stage : Node2D
 	private Player player;
 	
 	private Label livesLabel;
+	private Label levelLabel;
 	private Label pointsLabel;
 	private Label gameOverLabel;
 	
@@ -26,6 +27,7 @@ public partial class Stage : Node2D
 		this.player = GetNode<Player>("Player");
 		this.lives = player.getHealth();
 		this.livesLabel = GetNode<Label>("CanvasLayer/LivesLabel");
+		this.levelLabel = GetNode<Label>("CanvasLayer/LevelLabel");
 		this.pointsLabel = GetNode<Label>("CanvasLayer/PointsLabel");
 		this.gameOverLabel = GetNode<Label>("CanvasLayer/GameOverLabel");
 	}
@@ -37,6 +39,7 @@ public partial class Stage : Node2D
 		int yPosition = -30;
 		
 		Enemy newEnemy = enemyScene.Instantiate<Enemy>();
+		newEnemy.initiate(this.difficultyLevel);
 		newEnemy.GlobalPosition = new Vector2(xPosition,yPosition);
 		
 		GetTree().CurrentScene.AddChild(newEnemy);
@@ -59,7 +62,7 @@ public partial class Stage : Node2D
 		}
 		
 		this.difficultyLevel = (byte)(this.points / 5000);
-		GD.Print(this.difficultyLevel);
+		this.levelLabel.Text = "Level: " + (this.difficultyLevel + 1);
 		
 		pointsLabel.Text = "Pontos: " + this.points;
 	}

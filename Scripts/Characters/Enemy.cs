@@ -3,9 +3,10 @@ using System;
 
 public partial class Enemy : Character
 {
-	private const byte points = 250;
 	private PackedScene bulletScene;
 	private Node currentScene;
+	private ushort points;
+	private byte difficulty;
 	private float xSpeed;
 	private float ySpeed;
 	private float sprite_width;
@@ -19,7 +20,13 @@ public partial class Enemy : Character
 		this.bulletScene = GD.Load<PackedScene>("res://Entities/bullet_entity.tscn");
 		this.currentScene = GetTree().CurrentScene;
 		this.xSpeed = rand.Next(40, 80) * -1f;
-		this.ySpeed = 10f;
+	}
+	
+	public void initiate(byte difficulty)
+	{
+		this.difficulty = difficulty;
+		this.ySpeed = 20f * (difficulty + 1);
+		this.points = (ushort)(250 * (difficulty + 1));
 	}
 	
 	public void _TakeDamage(byte damage)
