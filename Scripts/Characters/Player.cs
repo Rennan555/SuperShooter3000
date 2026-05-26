@@ -16,7 +16,6 @@ public partial class Player : Character
 	public void TakeDamage(byte damage)
 	{
 		this.health -= damage;
-		GD.Print("Tomei: ", this.health);
 		if (this.health <= 0)
 		{
 			QueueFree();
