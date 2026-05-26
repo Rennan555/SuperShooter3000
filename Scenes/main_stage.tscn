@@ -44,5 +44,21 @@ offset_right = 224.0
 offset_bottom = 288.0
 color = Color(0.36206952, 0.0014006048, 0.60311276, 1)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Vidas: 3"
+
+[node name="PointsLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "Pontos: 0"
+
 [connection signal="addPoints" from="." to="." method="_AddPoints"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_SpawnEnemy"]

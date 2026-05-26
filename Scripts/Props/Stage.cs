@@ -8,10 +8,14 @@ public partial class Stage : Node2D
 	
 	private ushort points = 0; // 0 a 65.535
 	private PackedScene enemyScene;
+	private Label livesLabel;
+	private Label pointsLabel;
 	
 	public override void _Ready()
 	{
 		this.enemyScene = GD.Load<PackedScene>("res://Entities/enemy_entity.tscn");
+		this.livesLabel = GetNode<Label>("CanvasLayer/LivesLabel");
+		this.pointsLabel = GetNode<Label>("CanvasLayer/PointsLabel");
 	}
 	
 	public void _SpawnEnemy()
@@ -41,6 +45,6 @@ public partial class Stage : Node2D
 		{
 			this.points += extraPoints;
 		}
-		GD.Print("Pontos: ", this.points);
+		pointsLabel.Text = "Pontos: " + this.points;
 	}
 }
