@@ -11,8 +11,11 @@ public partial class Stage : Node2D
 	
 	private ushort points = 0; // 0 a 65.535
 	private byte lives;
+	private byte difficultyLevel;
+	
 	private PackedScene enemyScene;
 	private Player player;
+	
 	private Label livesLabel;
 	private Label pointsLabel;
 	private Label gameOverLabel;
@@ -54,6 +57,10 @@ public partial class Stage : Node2D
 		{
 			this.points += extraPoints;
 		}
+		
+		this.difficultyLevel = (byte)(this.points / 5000);
+		GD.Print(this.difficultyLevel);
+		
 		pointsLabel.Text = "Pontos: " + this.points;
 	}
 	
