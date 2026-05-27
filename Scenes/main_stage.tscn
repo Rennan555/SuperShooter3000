@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c80unb0fba3c"]
+[gd_scene load_steps=10 format=3 uid="uid://c80unb0fba3c"]
 
 [ext_resource type="Script" uid="uid://8u6fsy1ru4f1" path="res://Scripts/Props/Stage.cs" id="1_f1t2y"]
 [ext_resource type="PackedScene" uid="uid://dplo301xd7vea" path="res://Entities/player_entity.tscn" id="2_g6ddx"]
 [ext_resource type="Texture2D" uid="uid://3evd37v0clfe" path="res://Assets/Sprites/Props/bg_cima.png" id="3_b2m6o"]
 [ext_resource type="Texture2D" uid="uid://c2rxiuxiyfs7i" path="res://Assets/Sprites/Props/bg_meio.png" id="4_f1t2y"]
+[ext_resource type="Script" uid="uid://dxkoy2hcan25u" path="res://Scripts/Props/EscapeOption.cs" id="5_f1t2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2m6o"]
 size = Vector2(20, 287)
@@ -119,6 +120,10 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 34
 text = "Game Over"
+
+[node name="EscapeOption" type="Node" parent="."]
+script = ExtResource("5_f1t2y")
+metadata/_custom_type_script = "uid://dxkoy2hcan25u"
 
 [connection signal="addPoints" from="." to="." method="_AddPoints"]
 [connection signal="playerDamage" from="." to="." method="_PlayerDamage"]

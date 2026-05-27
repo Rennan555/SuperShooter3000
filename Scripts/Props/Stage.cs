@@ -35,7 +35,7 @@ public partial class Stage : Node2D
 	public void _SpawnEnemy()
 	{
 		Random rand = new Random();
-		int xPosition = rand.Next(33,220);
+		int xPosition = rand.Next(33,210);
 		int yPosition = -30;
 		
 		Enemy newEnemy = enemyScene.Instantiate<Enemy>();
