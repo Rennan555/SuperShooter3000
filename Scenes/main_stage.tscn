@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c80unb0fba3c"]
 
 [ext_resource type="Script" uid="uid://8u6fsy1ru4f1" path="res://Scripts/Props/Stage.cs" id="1_f1t2y"]
-[ext_resource type="PackedScene" uid="uid://dplo301xd7vea" path="res://Entities/player_entity.tscn" id="2_g6ddx"]
+[ext_resource type="PackedScene" path="res://Entities/player_entity.tscn" id="2_g6ddx"]
 [ext_resource type="Texture2D" uid="uid://3evd37v0clfe" path="res://Assets/Sprites/Props/bg_cima.png" id="3_b2m6o"]
 [ext_resource type="Texture2D" uid="uid://c2rxiuxiyfs7i" path="res://Assets/Sprites/Props/bg_meio.png" id="4_f1t2y"]
 
