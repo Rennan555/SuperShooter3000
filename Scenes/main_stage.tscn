@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://c80unb0fba3c"]
+[gd_scene load_steps=9 format=3 uid="uid://c80unb0fba3c"]
 
 [ext_resource type="Script" uid="uid://8u6fsy1ru4f1" path="res://Scripts/Props/Stage.cs" id="1_f1t2y"]
-[ext_resource type="PackedScene" path="res://Entities/player_entity.tscn" id="2_g6ddx"]
+[ext_resource type="PackedScene" uid="uid://dplo301xd7vea" path="res://Entities/player_entity.tscn" id="2_g6ddx"]
 [ext_resource type="Texture2D" uid="uid://3evd37v0clfe" path="res://Assets/Sprites/Props/bg_cima.png" id="3_b2m6o"]
 [ext_resource type="Texture2D" uid="uid://c2rxiuxiyfs7i" path="res://Assets/Sprites/Props/bg_meio.png" id="4_f1t2y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2m6o"]
+size = Vector2(20, 287)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1t2y"]
+size = Vector2(20, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u1b4"]
+size = Vector2(231, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_invvc"]
+size = Vector2(246, 20)
 
 [node name="MainStage" type="Node2D"]
 script = ExtResource("1_f1t2y")
@@ -13,6 +25,24 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_g6ddx")]
 position = Vector2(116, 248)
+
+[node name="BoundingBody" type="StaticBody2D" parent="."]
+
+[node name="LeftCollision" type="CollisionShape2D" parent="BoundingBody"]
+position = Vector2(-13, 144)
+shape = SubResource("RectangleShape2D_b2m6o")
+
+[node name="RightCollision" type="CollisionShape2D" parent="BoundingBody"]
+position = Vector2(238, 140)
+shape = SubResource("RectangleShape2D_f1t2y")
+
+[node name="TopCollision" type="CollisionShape2D" parent="BoundingBody"]
+position = Vector2(112.5, -10)
+shape = SubResource("RectangleShape2D_7u1b4")
+
+[node name="BottomCollision" type="CollisionShape2D" parent="BoundingBody"]
+position = Vector2(118, 298)
+shape = SubResource("RectangleShape2D_invvc")
 
 [node name="ParallaxLayers" type="Node2D" parent="."]
 
